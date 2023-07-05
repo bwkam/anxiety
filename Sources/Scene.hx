@@ -31,6 +31,7 @@ class Scene {
 	public function render(frames:Array<Framebuffer>) {
 		var g = frames[0].g4;
 		g.begin();
+		g.viewport(0, 0, System.windowWidth(), System.windowHeight());
 		g.clear(Color.fromFloats(0.0, 0.0, 0.3), 1.0);
 		sprite.render(g);
 		g.end();
