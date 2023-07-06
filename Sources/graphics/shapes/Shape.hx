@@ -47,7 +47,7 @@ abstract class Shape {
 		this.y = y;
 
 		var structure = new VertexStructure();
-		structure.add("pos", VertexData.Float2);
+		structure.add("pos", VertexData.Float3);
 
 		_pipeline = new PipelineState();
 		_pipeline.inputLayout = [structure];
@@ -66,10 +66,10 @@ abstract class Shape {
 
 		// the transformation matrices
 		_model = FastMatrix4.identity();
-		_model = FastMatrix4.translation(this.x, this.y, 0.0);
-		_model = _model.multmat(FastMatrix4.scale(100.0, 100.0, 1.0));
+		// _model = FastMatrix4.translation(this.x, this.y, 0.0);
+		// _model = _model.multmat(FastMatrix4.scale(100.0, 100.0, 1.0));
 
-		_vertexBuffer = new VertexBuffer(Std.int(_vertices.length / 2), structure, Usage.StaticUsage,);
+		_vertexBuffer = new VertexBuffer(Std.int(_vertices.length / 3), structure, Usage.StaticUsage,);
 
 		var vbData = _vertexBuffer.lock();
 		for (i in 0...vbData.length) {

@@ -37,10 +37,12 @@ class Camera {
 		var ortho_far = 3000.0;
 
 		// proj
-		proj = new FastMatrix4(2.0 / System.windowWidth(), 0.0, 0.0, 0.0, 0.0, 2.0 / System.windowHeight(), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, -1.0, 0.0,
-			1.0);
-		// proj = (-half_width, half_width, -half_height, half_height, ortho_near, ortho_far); // Camera matrix
-		// proj = GLM.orthographic(-half_width, half_width, -half_height, half_height, ortho_near, ortho_far, proj);
+		var w = System.windowWidth();
+		var h = System.windowHeight();
+
+		proj = new FastMatrix4(2.0 / w, 0.0, 0.0, 0.0, 0.0, 2.0 / h, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+		// proj = GLM.orthographic(-half_width, half_width, -half_height, half_height, ortho_near, ortho_far, proj); // Camera matrix
+		// proj = FastMatrix4.orthogonalProjection(0, w, 0, h, 0.1, 1000.0);
 
 		// view = FastMatrix4.lookAt(position, // Camera is here
 		// 	look, // and looks here : at the same position, plus "direction"
